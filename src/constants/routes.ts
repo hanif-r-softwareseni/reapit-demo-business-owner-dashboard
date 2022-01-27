@@ -3,6 +3,6 @@ export const Routes = {
   FORM: '/form',
   TABLE: '/table',
   LIST: '/list',
-  DATA: '/data',
+  PROPERTIES: '/properties',
   LOGIN: '/login',
 }

@@ -25,7 +25,7 @@ describe('getDefaultNavIndex', () => {
       index: 1,
     },
     {
-      route: Routes.DATA,
+      route: Routes.PROPERTIES,
       index: 2,
     },
     {

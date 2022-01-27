@@ -10,7 +10,7 @@ export const getDefaultNavIndex = (pathname: string) => {
   switch (pathname) {
     case Routes.HOME:
       return 1
-    case Routes.DATA:
+    case Routes.PROPERTIES:
       return 2
     case Routes.TABLE:
     case Routes.LIST:
@@ -35,9 +35,9 @@ export const Nav: FC = () => {
     },
     {
       itemIndex: 2,
-      text: 'Data',
+      text: 'Properties',
       iconId: 'dataMenu',
-      callback: navigate(history, Routes.DATA),
+      callback: navigate(history, Routes.PROPERTIES),
     },
     {
       itemIndex: 3,

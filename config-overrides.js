@@ -42,6 +42,19 @@ const transformLoader = (loader) => {
           sourceMap: process.env.NODE_ENV !== 'production',
           babelOptions: {
             presets,
+            plugins: [
+              [
+                "module-resolver",
+                {
+                  "root": [
+                    "./src"
+                  ],
+                  "alias": {
+                    "root": ".",
+                  },
+                },
+              ],
+            ],
           },
         },
       },

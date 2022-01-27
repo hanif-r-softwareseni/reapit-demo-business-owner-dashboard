@@ -31,7 +31,8 @@ export const catchChunkError = (
 const LoginPage = React.lazy(() => catchChunkError(() => import('../components/pages/login-page')))
 const HomePage = React.lazy(() => catchChunkError(() => import('../components/pages/home-page')))
 const ExamplesPage = React.lazy(() => catchChunkError(() => import('../components/pages/examples-page')))
-const DataPage = React.lazy(() => catchChunkError(() => import('../components/pages/data-page')))
+const PropertyListPage = React.lazy(() => catchChunkError(() => import('../components/pages/properties-page')))
+const PropertyDetailsPage = React.lazy(() => catchChunkError(() => import('../components/pages/property-details-page')))
 
 const Router = () => (
   <BrowserRouter history={history}>
@@ -44,7 +45,8 @@ const Router = () => (
             <Route path={Routes.FORM} exact component={ExamplesPage} />
             <Route path={Routes.TABLE} exact component={ExamplesPage} />
             <Route path={Routes.LIST} exact component={ExamplesPage} />
-            <Route path={Routes.DATA} exact component={DataPage} />
+            <Route path={Routes.PROPERTIES} exact component={PropertyListPage} />
+            <Route path={`${Routes.PROPERTIES}/:id`} exact component={PropertyDetailsPage} />
           </Switch>
         </PrivateRouteWrapper>
         <Redirect to={Routes.LOGIN} />
