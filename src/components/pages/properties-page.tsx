@@ -11,7 +11,7 @@ import {
   ElTableCellContent,
   FlexContainer,
 } from '@reapit/elements'
-import { PropertyFilter } from 'components/ui'
+import { PropertyFilter, Icon } from 'components/ui'
 import { useReapitConnect } from '@reapit/connect-session'
 import { reapitConnectBrowserSession } from '../../core/connect-session'
 import { propertiesApiService, QueryParams } from '../../platform-api/properties-api'
@@ -24,6 +24,10 @@ import { Routes } from 'constants/routes'
 import { PropertyModelPagedResult, PropertyAddressModel, PropertyInternalAreaModel } from '@reapit/foundations-ts-definitions'
 import { RowProps } from '@reapit/elements'
 
+type SortState = {
+  [name: string]: 'asc' | 'desc'
+}
+
 interface MyRowProps extends RowProps {
   id: string
 }
@@ -31,31 +35,30 @@ interface MyRowProps extends RowProps {
 export const PropertiesPage: FC = () => {
   const { connectSession } = useReapitConnect(reapitConnectBrowserSession)
   const [properties, setProperties] = useState<PropertyModelPagedResult | undefined>(undefined)
-  const [queryParams, setQueryParams] = useState<QueryParams>({})
+  const [filterQueryParams, setFilterQueryParams] = useState<QueryParams>({})
+  const [isFilterReady, setIsFilterReady] = useState(false)
   const [loading, setLoading] = useState<boolean>(false)
+  const [sortState, setSortState] = useState<SortState>({})
+  const [sortQueryParams, setSortQueryParams] = useState<QueryParams>({})
 
   const history = useHistory()
 
   useEffect(() => {
-    if (connectSession) {
+    if (connectSession && isFilterReady) {
       fetchProperties()
     }
-  }, [connectSession, queryParams])
+  }, [connectSession, filterQueryParams, isFilterReady, sortQueryParams])
 
   async function fetchProperties() {
     const baseQueryParams = {
       marketingMode: ['selling', 'letting'],
-      // pageSize: 1,
       embed: ['negotiator'],
       officeId: ['MKT'],
-      // priceFrom: 1000,
-      // priceTo: 1000,
-      // sellingStatus: ['underOffer']
     } as QueryParams
 
     setLoading(true)
     const serviceResponse = await propertiesApiService(connectSession, 
-      { ...baseQueryParams, ...queryParams })
+      { ...baseQueryParams, ...filterQueryParams, ...sortQueryParams })
 
     if (serviceResponse) {
       setProperties(serviceResponse)
@@ -64,7 +67,12 @@ export const PropertiesPage: FC = () => {
   }
 
   function applyFilter(qp: QueryParams) {
-    setQueryParams(qp)
+    setFilterQueryParams(qp)
+  }
+
+  function fetchIsReady(qp: QueryParams) {
+    setFilterQueryParams(qp)
+    setIsFilterReady(true)
   }
 
   const propertiesRowModel = useMemo<MyRowProps[]>((): MyRowProps[] => {
@@ -165,16 +173,33 @@ export const PropertiesPage: FC = () => {
     if (!locality) return ''
 
     return locality.map((loc) => {
-      if (loc === 'townCity') return 'town/city'
+      if (loc === 'village') return 'Suburban'
+      if (loc === 'rural') return 'Rural'
+      if (loc === 'townCity') return 'Urban'
       return loc
     }).join(', ')
+  }
+
+  function toggleSort(label) {
+    let newSortState: SortState = {}
+    if (sortState[label] === undefined) {
+      newSortState = { [label]: 'asc' }
+    }
+
+    if (sortState[label] === 'asc') {
+      newSortState = { [label]: 'desc' }
+    } else {
+      newSortState = { [label]: 'asc' }
+    }
+    setSortState(newSortState)
+    setSortQueryParams({ sortBy: `${newSortState[label] === 'desc' ? '-' : ''}${label}` })
   }
 
   return (
     <PageContainer className={elHFull}>
       <Title>Property List</Title>
       <FlexContainer className="el-mb6">
-        <PropertyFilter onApply={applyFilter} />
+        <PropertyFilter onApply={applyFilter} onFilterReady={fetchIsReady} />
       </FlexContainer>
       {loading ? (
         <Loader label="loading" />
@@ -185,7 +210,21 @@ export const PropertiesPage: FC = () => {
               {index === 0 && (
                 <TableHeadersRow>
                   {row.cells.map((cell) => (
-                    <TableHeader key={cell.label}>{cell.label}</TableHeader>
+                    <TableHeader key={cell.label} 
+                    onClick={() => toggleSort(cell.label)}
+                    >
+                      {cell.label} 
+                      <span className="el-ml2">
+                        {sortState[cell.label] === 'asc' && (
+                          <Icon asset="fontawesome" icon="long-arrow-alt-up" style={{ fontSize: '15px'}} />
+                        )}
+                        {sortState[cell.label] === 'desc' && (
+                          <Icon asset="fontawesome" icon="long-arrow-alt-down" style={{ fontSize: '15px'}} />
+                        )}
+                      </span>
+                      
+                      
+                    </TableHeader>
                   ))}
                 </TableHeadersRow>
               )}

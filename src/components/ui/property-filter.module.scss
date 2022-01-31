@@ -1,0 +1,32 @@
+.filterContainer {
+  border: 1px solid #aaa
+}
+
+.filterItem {
+  width: 200px;
+  background-color: #eee;
+}
+
+.filterItem:nth-child(1) {
+  flex: 30;
+}
+
+.filterItem:nth-child(2) {
+  flex: 20;
+}
+
+.filterItem:nth-child(3) {
+  flex: 30;
+}
+
+.filterItem:nth-child(4) {
+  flex: 15;
+}
+
+.filterItem:nth-child(5) {
+  flex: 15;
+}
+
+.checkbox[type="checkbox"] {
+  background-color: white;
+}
