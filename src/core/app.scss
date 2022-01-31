@@ -17,3 +17,29 @@
 .el-dark-blue-text {
   color: #262f69
 }
+
+.el-white-text {
+  color: white;
+}
+
+.el-info-caption-text {
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.el-details-card-heading {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.el-card-wrap {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px;
+  border: 2px solid rgba(99, 85, 164, 0.2);
+}
+
+.el-details-card-right {
+  border-left: 1px solid #ccc;
+  height: 100%;
+  padding-left: 12px;
+}

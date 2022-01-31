@@ -210,10 +210,10 @@ function PriceFilterView({ price, onChangeFilter }: PriceFilterViewProps) {
 
   return (
     <div className={`el-mr2 el-p3 ${styles.filterItem}`}>
-      <div className="el-fs-6 el-mb3 el-dark-blue-text">
+      <div className="el-fs-6 el-mb3 el-white-text">
         Price
       </div>
-      <div className="el-fs-8 el-mb2">
+      <div className="el-fs-8 el-mb2 el-white-text">
         {pound(price.from)} - {pound(price.to)}
       </div>
       <div className="el-px2">
@@ -248,10 +248,9 @@ function TypeFilterView({ type, onChangeFilter}: TypeFilterViewProps) {
 
   return (
     <FlexContainer 
-      isFlexColumn className="el-mx2 el-p3" 
-      style={{ width: '200px', flex: 20, backgroundColor: '#eee' }}
+      isFlexColumn className={`el-mx2 el-p3 ${styles.filterItem}`}
     >
-      <div className="el-fs-6 el-mb3">
+      <div className="el-fs-6 el-mb3 el-white-text">
         Type
       </div>
       <div className="el-fs-8 el-my-auto">
@@ -288,7 +287,7 @@ function LocalityFilterView({ locality, onChangeFilter }: LocalityFilterViewProp
     <FlexContainer 
       isFlexColumn className={`el-mx2 el-p3 ${styles.filterItem}`}
     >
-      <div className="el-fs-6 el-mb3">
+      <div className="el-fs-6 el-mb3 el-white-text">
         Locality
       </div>
       <FlexContainer className="el-fs-8 el-my-auto">
@@ -301,7 +300,7 @@ function LocalityFilterView({ locality, onChangeFilter }: LocalityFilterViewProp
                 onChange={() => changeLocalityFilter(opt.value)} 
                 onClick={(ev) => ev.stopPropagation()} />
             </div>
-            <p style={{ lineHeight: 1.5 }}>
+            <p style={{ lineHeight: 1.5 }} className="el-white-text">
               {opt.label}
             </p>
           </FlexContainer>
@@ -330,12 +329,12 @@ function BedroomsFilterView({ bedrooms, onChangeFilter }: BedroomsFilterViewProp
 
   return (
     <div className={`el-mx2 el-p3 ${styles.filterItem}`}>
-      <div className="el-fs-6 el-mb3">
+      <div className="el-fs-6 el-mb3 el-white-text">
         Bedrooms
       </div>
       <FlexContainer className="el-fs-8 el-mb2">
         <div className="el-flex-grow el-mr4">
-          <div className="el-mb2 el-fs-9">Min</div>
+          <div className="el-mb2 el-fs-9 el-white-text">Min</div>
           <Select 
             value={bedrooms.from} 
             onChange={(ev) => changeBedroomsFilter({ from: ev.target.value })}
@@ -347,7 +346,7 @@ function BedroomsFilterView({ bedrooms, onChangeFilter }: BedroomsFilterViewProp
           </Select>
         </div>
         <div className="el-flex-grow">
-          <div className="el-mb2 el-fs-9">Max</div>
+          <div className="el-mb2 el-fs-9 el-white-text">Max</div>
           <Select 
             value={bedrooms.to} 
             onChange={(ev) => changeBedroomsFilter({ to: ev.target.value })}
@@ -385,12 +384,12 @@ function BathroomsFilterView({ bathrooms, onChangeFilter }: BathroomsFilterViewP
 
   return (
     <div className={`el-flex-grow el-ml2 el-p3 ${styles.filterItem}`}>
-      <div className="el-fs-6 el-mb3">
+      <div className="el-fs-6 el-mb3 el-white-text">
         Bathrooms
       </div>
       <FlexContainer className="el-fs-8 el-mb2">
         <div className="el-flex-grow el-mr4">
-          <div className="el-mb2 el-fs-9">Min</div>
+          <div className="el-mb2 el-fs-9 el-white-text">Min</div>
           <Select 
             value={bathrooms.from} 
             onChange={(ev) => changeBathroomsFilter({ from: ev.target.value })}
@@ -402,7 +401,7 @@ function BathroomsFilterView({ bathrooms, onChangeFilter }: BathroomsFilterViewP
           </Select>
         </div>
         <div className="el-flex-grow">
-          <div className="el-mb2 el-fs-9">Max</div>
+          <div className="el-mb2 el-fs-9 el-white-text">Max</div>
           <Select 
             value={bathrooms.to} 
             onChange={(ev) => changeBathroomsFilter({ to: ev.target.value })}

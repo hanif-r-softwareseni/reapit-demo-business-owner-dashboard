@@ -1,5 +1,5 @@
 import { ReapitConnectSession } from '@reapit/connect-session'
-import { PropertyModelPagedResult, Properties } from '@reapit/foundations-ts-definitions'
+import { PropertyModelPagedResult, Properties, PropertyModel } from '@reapit/foundations-ts-definitions'
 import { URLS, BASE_HEADERS } from '../constants/api'
 import { toQueryString } from 'utils/query-params'
 
@@ -31,5 +31,33 @@ export const propertiesApiService = async (
     throw new Error('No response returned by API')
   } catch (err) {
     console.error('Error fetching Properties', err)
+  }
+}
+
+export const getPropertyById = async (
+  session: ReapitConnectSession | null, 
+  id: string
+): Promise<PropertyModel | undefined> => {
+  try {
+    if (!session) return
+
+    const url = `${window.reapit.config.platformApiUrl}${URLS.PROPERTIES}/${id}`
+
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        ...BASE_HEADERS,
+        Authorization: `Bearer ${session?.accessToken}`,
+      },
+    })
+
+    if (response) {
+      const responseJson: Promise<PropertyModel | undefined> = response.json()
+      return responseJson
+    }
+
+    throw new Error('No response returned by API')
+  } catch (err) {
+    console.error('Error fetching Property', err)
   }
 }
