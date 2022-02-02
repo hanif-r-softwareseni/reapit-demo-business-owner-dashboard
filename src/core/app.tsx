@@ -5,6 +5,7 @@ import { MediaStateProvider, NavStateProvider } from '@reapit/elements'
 import '@reapit/elements/dist/index.css'
 import './icon'
 import './app.scss'
+import './__styles__/app'
 
 const App: FC = () => (
   <ErrorBoundary>

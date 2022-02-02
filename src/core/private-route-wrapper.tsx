@@ -3,7 +3,9 @@ import { useReapitConnect } from '@reapit/connect-session'
 import { Nav } from '../components/ui/nav/nav'
 import { reapitConnectBrowserSession } from './connect-session'
 import { useLocation, Redirect } from 'react-router'
-import { Loader, MainContainer, PageContainer } from '@reapit/elements'
+import { Loader, MainContainer, PageContainer, elWFull } from '@reapit/elements'
+import { MainHeader } from 'components/ui/nav/main-header'
+import { cx } from '@linaria/core'
 
 export type PrivateRouteWrapperProps = {}
 
@@ -29,7 +31,10 @@ export const PrivateRouteWrapper: FC<PrivateRouteWrapperProps> = ({ children }) 
   return (
     <MainContainer>
       <Nav />
-      <Suspense fallback={<Loader label="Loading" fullPage />}>{children}</Suspense>
+      <div className={cx(elWFull)}>
+        <MainHeader />
+        <Suspense fallback={<Loader label="Loading" fullPage />}>{children}</Suspense>
+      </div>
     </MainContainer>
   )
 }
