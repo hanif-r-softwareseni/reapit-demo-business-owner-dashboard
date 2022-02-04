@@ -2,6 +2,7 @@ import React, { ComponentType } from 'react'
 import { render } from 'react-dom'
 import { Config } from './types/global'
 import config from './reapit.config.json'
+import 'core/prepare-services'
 
 // Init global config
 window.reapit = {

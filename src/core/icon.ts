@@ -4,7 +4,9 @@ import {
   faLongArrowAltRight, 
   faArrowLeft, 
   faLongArrowAltUp,
-  faLongArrowAltDown, 
+  faLongArrowAltDown,
+  faSearch,
+  faTimesCircle,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -12,5 +14,7 @@ library.add(
   faLongArrowAltRight, 
   faArrowLeft, 
   faLongArrowAltUp, 
-  faLongArrowAltDown
+  faLongArrowAltDown,
+  faSearch,
+  faTimesCircle,
 )

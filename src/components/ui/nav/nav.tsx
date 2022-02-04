@@ -40,38 +40,15 @@ export const Nav: FC = () => {
       callback: navigate(history, Routes.PROPERTIES),
     },
     {
-      itemIndex: 3,
-      text: 'UI',
-      iconId: 'uiMenu',
-      callback: navigate(history, Routes.TABLE),
-      subItems: [
-        {
-          itemIndex: 1,
-          callback: navigate(history, Routes.TABLE),
-          text: 'Table',
-        },
-        {
-          itemIndex: 2,
-          callback: navigate(history, Routes.LIST),
-          text: 'List',
-        },
-        {
-          itemIndex: 3,
-          callback: navigate(history, Routes.FORM),
-          text: 'Form',
-        },
-      ],
+      itemIndex: 4,
+      text: 'Messages',
+      iconId: 'appsMenu',
+      callback: navigate(history, Routes.MESSAGES),
     },
   ]
 
   if (!connectIsDesktop) {
     navOptions.push(
-      {
-        itemIndex: 4,
-        callback: () => (window.location.href = window.reapit.config.marketplaceUrl),
-        iconId: 'appsMenu',
-        text: 'Apps',
-      },
       {
         itemIndex: 5,
         callback: connectLogoutRedirect,
