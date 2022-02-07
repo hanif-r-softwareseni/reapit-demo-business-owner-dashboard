@@ -5,5 +5,6 @@ export const Routes = {
   LIST: '/list',
   PROPERTIES: '/properties',
   MESSAGES: '/messages',
+  FILES: '/files',
   LOGIN: '/login',
 }

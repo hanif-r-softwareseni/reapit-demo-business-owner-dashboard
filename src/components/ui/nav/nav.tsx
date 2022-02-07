@@ -45,6 +45,12 @@ export const Nav: FC = () => {
       iconId: 'appsMenu',
       callback: navigate(history, Routes.MESSAGES),
     },
+    {
+      itemIndex: 5,
+      text: 'Files',
+      iconId: 'docsMenu',
+      callback: navigate(history, Routes.FILES),
+    },
   ]
 
   if (!connectIsDesktop) {
