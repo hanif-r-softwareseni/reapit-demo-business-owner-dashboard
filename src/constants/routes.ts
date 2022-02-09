@@ -6,5 +6,7 @@ export const Routes = {
   PROPERTIES: '/properties',
   MESSAGES: '/messages',
   FILES: '/files',
+  USER_PROFILE: '/user-profile',
+  AGENTS: '/agents',
   LOGIN: '/login',
 }

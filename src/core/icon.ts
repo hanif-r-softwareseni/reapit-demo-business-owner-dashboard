@@ -7,6 +7,9 @@ import {
   faLongArrowAltDown,
   faSearch,
   faTimesCircle,
+  faUserFriends,
+  faUserTie,
+  faBell,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -17,4 +20,7 @@ library.add(
   faLongArrowAltDown,
   faSearch,
   faTimesCircle,
+  faUserFriends,
+  faUserTie,
+  faBell,
 )

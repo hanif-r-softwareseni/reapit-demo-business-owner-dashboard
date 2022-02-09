@@ -114,9 +114,7 @@ function getPriceData() {
     results.push({ name: date.format('YYYY-MM-DD'), price: random(1, 50) * 100 })
     date = date.add(1, 'day')
   }
-
   
-
   return results
 }
 

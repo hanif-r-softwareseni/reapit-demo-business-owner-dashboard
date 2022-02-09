@@ -35,6 +35,8 @@ const PropertyListPage = React.lazy(() => catchChunkError(() => import('../compo
 const PropertyDetailsPage = React.lazy(() => catchChunkError(() => import('../components/pages/property-details-page')))
 const MessagesPage = React.lazy(() => catchChunkError(() => import('../components/pages/messages-page')))
 const FilesPage = React.lazy(() => catchChunkError(() => import('../components/pages/files-page')))
+const UserProfilePage = React.lazy(() => catchChunkError(() => import('components/pages/user-profile-page')))
+const AgentsPage = React.lazy(() => catchChunkError(() => import('components/pages/agents-page')))
 
 const Router = () => (
   <BrowserRouter history={history}>
@@ -51,6 +53,8 @@ const Router = () => (
             <Route path={`${Routes.PROPERTIES}/:id`} exact component={PropertyDetailsPage} />
             <Route path={`${Routes.MESSAGES}`} exact component={MessagesPage} />
             <Route path={`${Routes.FILES}`} exact component={FilesPage} />
+            <Route path={`${Routes.USER_PROFILE}`} exact component={UserProfilePage} />
+            <Route path={`${Routes.AGENTS}`} exact component={AgentsPage} />
           </Switch>
         </PrivateRouteWrapper>
         <Redirect to={Routes.LOGIN} />

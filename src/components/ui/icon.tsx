@@ -9,16 +9,18 @@ import { IconName as FontAwesomeIconNames} from '@fortawesome/fontawesome-common
 type Props = {
   asset?: 'reapit' | 'fontawesome'
   icon: ReapitIconNames | FontAwesomeIconNames
+  className?: string
   style?: CSSProperties
 }
 
-export const Icon : FC<Props> = ({ asset = 'reapit', icon, style }) => {
+export const Icon : FC<Props> = ({ asset = 'reapit', icon, className, style }) => {
   if (asset === 'reapit') {
-    return ( <RPIcon icon={icon as ReapitIconNames} /> )
+    return ( <RPIcon icon={icon as ReapitIconNames} style={style} /> )
   }
 
   if (asset === 'fontawesome') {
-    return <FontAwesomeIcon icon={icon as FontAwesomeIconNames} style={style} className={styles.primaryColor} />
+    return <FontAwesomeIcon icon={icon as FontAwesomeIconNames} style={style} 
+      className={`${styles.primaryColor} ${className || ''}`} />
   }
 
   return ( <RPIcon icon={icon as ReapitIconNames} /> )

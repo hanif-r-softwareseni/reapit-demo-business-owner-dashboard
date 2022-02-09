@@ -41,12 +41,18 @@ export const Nav: FC = () => {
     },
     {
       itemIndex: 4,
+      text: 'Agents',
+      iconId: 'profileMenu',
+      callback: navigate(history, Routes.AGENTS),
+    },
+    {
+      itemIndex: 5,
       text: 'Messages',
       iconId: 'appsMenu',
       callback: navigate(history, Routes.MESSAGES),
     },
     {
-      itemIndex: 5,
+      itemIndex: 6,
       text: 'Files',
       iconId: 'docsMenu',
       callback: navigate(history, Routes.FILES),

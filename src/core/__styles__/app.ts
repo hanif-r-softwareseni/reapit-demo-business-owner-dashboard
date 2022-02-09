@@ -1,5 +1,5 @@
 import { css } from '@linaria/core'
-import { mainHeaderHeight } from 'components/ui/nav/__styles__/main-header'
+import { mainHeaderHeight } from 'components/ui/nav/main-header'
 
 export const globals = css`
   :global() {

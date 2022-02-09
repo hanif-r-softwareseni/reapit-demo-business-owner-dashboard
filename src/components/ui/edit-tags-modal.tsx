@@ -91,8 +91,6 @@ export const EditTagsModal: FC<Props> = ({ name, selected, isOpen, onModalClose,
           No Tags
         </NoTags>
       )}
-
-      
       <div className="el-fs-6 el-mb4">Search Tags</div>
       <Input placeholder="Search agents, clients, and properties" value={searchValue}
         onChange={onSearchInputChange} className="el-w-full" />
